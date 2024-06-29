@@ -1,0 +1,10 @@
+[
+    {
+      "ParameterKey": "EmailSubscriptionEndpoint",
+      "ParameterValue": "your-email@gmail.com"
+    },
+    {
+      "ParameterKey": "FileUploadDestinationBucket",
+      "ParameterValue": "your-destination-bucket-name"
+    }
+]
