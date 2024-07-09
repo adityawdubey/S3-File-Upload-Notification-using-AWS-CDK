@@ -6,7 +6,7 @@ s3_client = boto3.client('s3')
 sns_client = boto3.client('sns')
 sqs_client = boto3.client('sqs')
 
-def lambda_handler(event, context):
+def handler(event, context):
     sns_topic_arn = os.environ['SNS_TOPIC_ARN']
     sqs_queue_url = os.environ['SQS_QUEUE_URL']
 
