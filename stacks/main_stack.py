@@ -30,7 +30,7 @@ class main_stack(Stack):
             sns.Subscription( self, 'MySnsSubscription',
                             topic=topic,
                             protocol=sns.SubscriptionProtocol.EMAIL,
-                            endpoint=email_subscription_endpoint
+                            endpoint=str(email_subscription_endpoint)
             )
 
             # Queue
