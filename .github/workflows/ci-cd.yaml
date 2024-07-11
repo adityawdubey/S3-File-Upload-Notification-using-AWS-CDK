@@ -25,8 +25,8 @@ jobs:
     - name: Synthesize CloudFormation template
       run: cdk synth
 
-    - name: Diff with deployed stack
-      run: cdk diff
+    # - name: Diff with deployed stack
+    #   run: cdk diff
 
     outputs:
       cdk_synth_output: ${{ steps.cdk-synth.outputs.stack-artifact-id }}
