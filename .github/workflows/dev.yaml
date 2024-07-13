@@ -1,4 +1,4 @@
-name: CDK Deploy (Dev Branch)
+name: CDK Deploy (main Branch)
 
 on:
   push:
