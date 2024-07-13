@@ -17,7 +17,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x
+            python-version: 3.x
 
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -25,7 +25,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
-          
+
+      - name: Export environment variables
+        run: |
+          echo "EMAIL_SUBSCRIPTION_ENDPOINT=${{ env.EMAIL_SUBSCRIPTION_ENDPOINT }}" >> $GITHUB_ENV
+          echo "FILE_UPLOAD_BUCKET=${{ env.FILE_UPLOAD_BUCKET }}" >> $GITHUB_ENV
+
       - name: Install CDK dependencies
         run: |
           python -m pip install --upgrade pip
