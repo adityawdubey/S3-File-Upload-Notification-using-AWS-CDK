@@ -4,7 +4,7 @@
 set -e
 
 # Bootstrap CDK environment (if not already done)
-cdk bootstrap
+# cdk bootstrap
 
 # Synthesize CloudFormation templates
 cdk synth
