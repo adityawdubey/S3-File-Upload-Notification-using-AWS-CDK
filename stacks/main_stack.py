@@ -21,8 +21,7 @@ class main_stack(Stack):
             self,
             "FileUploadDestinationBucket",
             bucket_name=file_upload_bucket,
-            # This will ensure bucket is deleted even if not empty
-            removal_policy=cdk.RemovalPolicy.DESTROY,
+            removal_policy=cdk.RemovalPolicy.DESTROY,  #This will ensure bucket is deleted even if not empty
             auto_delete_objects=True,  # Automatically delete objects in the bucket on delete
         )
 
