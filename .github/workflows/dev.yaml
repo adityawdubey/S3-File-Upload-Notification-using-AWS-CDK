@@ -9,7 +9,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment: development
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -28,17 +29,14 @@ jobs:
 
       - name: Export environment variables
         run: |
-          echo "EMAIL_SUBSCRIPTION_ENDPOINT=${{ env.EMAIL_SUBSCRIPTION_ENDPOINT }}" >> $GITHUB_ENV
-          echo "FILE_UPLOAD_BUCKET=${{ env.FILE_UPLOAD_BUCKET }}" >> $GITHUB_ENV
+          echo "EMAIL_SUBSCRIPTION_ENDPOINT=${{ vars.EMAIL_SUBSCRIPTION_ENDPOINT }}" >> $GITHUB_ENV
+          echo "FILE_UPLOAD_BUCKET=${{ vars.FILE_UPLOAD_BUCKET }}" >> $GITHUB_ENV
 
       - name: Install CDK dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           npm install -g aws-cdk
-
-      - name: Bootstrap CDK (if needed)
-        run: cdk bootstrap
 
       - name: Deploy CDK stack
         run: cdk deploy --all --require-approval never
