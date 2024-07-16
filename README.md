@@ -1,6 +1,6 @@
 # S3 File Upload Notification System using AWS CDK
 
-[![CDK Deploy (main Branch)](https://github.com/adityawdubey/S3-File-Upload-Notification-using-AWS-CDK/actions/workflows/dev.yaml/badge.svg)](https://github.com/adityawdubey/S3-File-Upload-Notification-using-AWS-CDK/actions/workflows/dev.yaml)
+[![CDK Deploy (main Branch)](https://github.com/adityawdubey/S3-File-Upload-Notification-using-AWS-CDK/workflows/dev.yaml/badge.svg)](https://github.com/adityawdubey/S3-File-Upload-Notification-using-AWS-CDK/actions/workflows/dev.yaml)
 
 This project is designed to provide a notification system for file uploads to an S3 bucket using AWS Lambda and other AWS services. When a file is uploaded to the specified S3 bucket, the system triggers a Lambda function which processes the file and sends notifications accordingly. 
 To implement the project step by step using the AWS Management Console, you can follow this project design narrative in my blog website: [https://adityadubey.cloud/s3-file-upload-notification-system](https://adityadubey.cloud/s3-file-upload-notification-system).
