@@ -12,6 +12,7 @@ To implement the project step by step using the AWS Management Console, you can 
 - [Prerequisites](#prerequisites)
 - [Setup and Deployment](#setup-and-deployment)
 - [Usage](#usage)
+- [References](#references)
 
 ## Architecture
 
@@ -63,10 +64,8 @@ pip install -r requirements.txt
 ```
 
 ### Configure AWS CLI
-Ensure your AWS CLI is configured with the necessary permissions.
 
-### Add dev parameters
-Ensure the dev-parameters.json file is updated with your specific configurations and is added to .gitignore
+Ensure your AWS CLI is configured with the necessary permissions.
 
 ### Running the deployment Script
 
