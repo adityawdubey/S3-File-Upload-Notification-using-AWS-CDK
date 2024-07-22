@@ -59,13 +59,13 @@ class main_stack(Stack):
             compatible_runtimes=[aws_lambda.Runtime.PYTHON_3_8],
         )
         # lambda function to process S3 file upload notifications
-        self.s3_file_upload_notification_processor = aws_lambda.Function(
+        self.s3_event_handler = aws_lambda.Function(
             self,
-            "s3_file_upload_notification_processor",
+            "s3_event_handler",
             runtime=aws_lambda.Runtime.PYTHON_3_8,
             handler="handler.lambda_handler",
             code=aws_lambda.Code.from_asset(
-                "./lambda_functions/s3_file_upload_notification_processor"),
+                "./lambda_functions/s3_event_handler"),
             # Attach the created Lambda layer
             layers=[self.lambda_layer],
             environment={
@@ -76,13 +76,13 @@ class main_stack(Stack):
         )
 
         # Grant Lambda permissions
-        self.bucket.grant_read_write(self.s3_file_upload_notification_processor)
-        self.queue.grant_send_messages(self.s3_file_upload_notification_processor)
-        self.topic.grant_publish(self.s3_file_upload_notification_processor)
+        self.bucket.grant_read_write(self.s3_event_handler)
+        self.queue.grant_send_messages(self.s3_event_handler)
+        self.topic.grant_publish(self.s3_event_handler)
 
         # Add an event notification to the S3 bucket to trigger the Lambda function on file upload
         self.bucket.add_event_notification(
             s3.EventType.OBJECT_CREATED,
             s3_notifications.LambdaDestination(
-                self.s3_file_upload_notification_processor),
+                self.s3_event_handler),
         )
