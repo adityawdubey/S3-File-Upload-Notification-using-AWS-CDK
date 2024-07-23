@@ -3,6 +3,9 @@
 # Ensure the script stops on errors
 set -e
 
+# Bootstrap the CDK environment
+cdk bootstrap
+
 # Synthesize CloudFormation templates
 cdk synth
 
