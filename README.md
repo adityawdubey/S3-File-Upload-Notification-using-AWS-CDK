@@ -23,7 +23,7 @@ The architecture consists of the following components:
 - **Lambda Function:** The heart of the system, automatically triggered by S3 events (file uploads), it processes the uploaded file and initiates notifications.
 - **Amazon SNS (Simple Notification Service):** Used to send notifications to subscribers via various channels (email, SMS, etc.).
 - **Amazon CloudWatch:** Provides logging and monitoring of the Lambda function's execution, ensuring observability and troubleshooting capabilities.
-- **Amazon SQS (Simple Queue Service):** Used for decoupling and scaling the processing of uploaded files.
+- **Amazon SQS (Simple Queue Service):** Used for decoupling and scaling the processing of uploaded files. 
 
 ## Features
 
