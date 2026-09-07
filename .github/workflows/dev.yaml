@@ -40,5 +40,10 @@ jobs:
           pip install -r requirements.txt
           npm install -g aws-cdk
 
+      - name: Bootstrap CDK environment
+        run: |
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+          cdk bootstrap "aws://${ACCOUNT_ID}/us-east-2"
+
       - name: Deploy CDK stack
         run: cdk deploy --all --require-approval never
