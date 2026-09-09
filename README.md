@@ -178,7 +178,7 @@ The S3 bucket is configured with `RemovalPolicy.DESTROY` and `auto_delete_object
 
 - **Lambda runtime:** The function targets `python3.8`, which is past AWS standard support. Upgrading to `python3.12` or later is recommended.
 - **Redundant Lambda layer:** `lambda_layer/requirements.txt` contains only `boto3`, which is already included in the Lambda runtime. The layer adds Docker build time at synth without providing anything new, and can be removed unless a specific `boto3` version is needed.
-- **No SQS consumer:** Metadata is written to the queue, but nothing reads from it yet. The queue exists as an extension point.
+- **SQS is an extension point:** SQS is included for future background processing and is not needed for the email notification feature currently implemented. Upload metadata is written to the queue, but no consumer reads it yet; email notifications are published directly to SNS by Lambda.
 - **No dead-letter queue:** S3 invokes the function asynchronously. On failure Lambda retries twice and then discards the event, leaving no record beyond CloudWatch. Adding a DLQ or an `on_failure` destination is recommended before relying on this in production.
 - **Bucket removal policy:** `RemovalPolicy.DESTROY` with `auto_delete_objects=True` is convenient for a demo but will delete real data on stack teardown. Change it before production use.
 - **`scripts/delete.sh` is empty.** Use `cdk destroy --all` for teardown.
